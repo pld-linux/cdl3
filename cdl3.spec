@@ -44,10 +44,9 @@ na zestaw poleceñ.
 
 %prep
 %setup -q
-%patch0 -p 1
+%patch0 -p1
 
 %build
-rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -58,6 +57,7 @@ rm -f missing
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -72,7 +72,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog NEWS README TODO docs/*.ps docs/*.k3
 %attr(755,root,root) %{_bindir}/*
 %{_includedir}/*
-%{_libdir}/*
-%doc README HACKING docs/*.ps docs/*.k3
+%{_libdir}/lib*.a
+%{_libdir}/lib*.la
+%{_mandir}/man[13n]/*
