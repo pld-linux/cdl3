@@ -1,0 +1,57 @@
+diff -ur cdl3-1.2.3.old/man/man1/Makefile.am cdl3-1.2.3/man/man1/Makefile.am
+--- cdl3-1.2.3.old/man/man1/Makefile.am	Wed Nov  6 23:22:11 2002
++++ cdl3-1.2.3/man/man1/Makefile.am	Thu Nov  7 00:01:47 2002
+@@ -1,7 +1,7 @@
+ ## Process this file with automake to produce Makefile.in
+ mandir = $(prefix)/man
+ man1dir = $(mandir)/man1
+-man1_DATA = $(EXTRA_DIST)
++man1DATA = $(EXTRA_DIST)
+ 
+ EXTRA_DIST = cdlc.1
+ 
+diff -ur cdl3-1.2.3.old/man/man3/Makefile.am cdl3-1.2.3/man/man3/Makefile.am
+--- cdl3-1.2.3.old/man/man3/Makefile.am	Wed Nov  6 23:22:11 2002
++++ cdl3-1.2.3/man/man3/Makefile.am	Thu Nov  7 00:01:47 2002
+@@ -1,7 +1,7 @@
+ ## Process this file with automake to produce Makefile.in
+ mandir = $(prefix)/man
+ man3dir = $(mandir)/man3
+-man3_DATA = $(EXTRA_DIST)
++man3DATA = $(EXTRA_DIST)
+ 
+ EXTRA_DIST =	cdlrts.3 \
+ 		cdl-converting.3 \
+diff -ur cdl3-1.2.3.old/stage1/Makefile.am cdl3-1.2.3/stage1/Makefile.am
+--- cdl3-1.2.3.old/stage1/Makefile.am	Wed Nov  6 23:22:11 2002
++++ cdl3-1.2.3/stage1/Makefile.am	Thu Nov  7 00:02:07 2002
+@@ -21,6 +21,8 @@
+ 
+ CSRC = cdl3rts.c predefrts.c flexarray.c
+ 
++CFLAGS = 
++
+ CFLAGS += -I../include
+ 
+ cdlc_SOURCES = $(CDL3SRC) $(CSRC)
+@@ -28,7 +30,7 @@
+ k3objs = $(CDL3SRC:.k3=.o)
+ K3objs = $(CDL3SRC:.K3=.o) 
+ 
+-cdlc: $(filter %.o,$(K3objs)) $(filter %o,$(k3objs)) $(CSRC:.c=.o)
++cdlc$(EXEEXT): $(filter %.o,$(K3objs)) $(filter %o,$(k3objs)) $(CSRC:.c=.o)
+ 	$(LIBTOOL) --mode=link $(CC) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $@
+ 
+ SUFFIXES = .k3 .o .K3 .k3
+diff -ur cdl3-1.2.3.old/stage2/Makefile.am cdl3-1.2.3/stage2/Makefile.am
+--- cdl3-1.2.3.old/stage2/Makefile.am	Wed Nov  6 23:22:11 2002
++++ cdl3-1.2.3/stage2/Makefile.am	Thu Nov  7 00:02:15 2002
+@@ -23,7 +23,7 @@
+ cdlc_LDADD = ../rts/libcdlrts.la
+ cdlc_DEPENDENCIES = ../rts/libcdlrts.la
+ 
+-cdlc: $(CDL3SRC:.k3=.o)
++cdlc$(EXEEXT): $(CDL3SRC:.k3=.o)
+ 	$(LIBTOOL) --mode=link $(CC) -o $@ $(LDFLAGS) $^ $(cdlc_LDADD)
+ 
+ SUFFIXES = .k3 .o 
