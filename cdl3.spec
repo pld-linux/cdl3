@@ -47,6 +47,7 @@ na zestaw poleceñ.
 %patch0 -p1
 
 %build
+cp -f /usr/share/automake/config.sub .
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
