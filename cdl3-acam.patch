@@ -1,40 +1,34 @@
-diff -ur cdl3-1.2.3.old/man/man1/Makefile.am cdl3-1.2.3/man/man1/Makefile.am
---- cdl3-1.2.3.old/man/man1/Makefile.am	Wed Nov  6 23:22:11 2002
-+++ cdl3-1.2.3/man/man1/Makefile.am	Thu Nov  7 00:01:47 2002
-@@ -1,7 +1,7 @@
- ## Process this file with automake to produce Makefile.in
- mandir = $(prefix)/man
- man1dir = $(mandir)/man1
--man1_DATA = $(EXTRA_DIST)
-+man1DATA = $(EXTRA_DIST)
+--- cdl3-1.2.3/rts/Makefile.am.orig	2001-06-20 17:58:46.000000000 +0200
++++ cdl3-1.2.3/rts/Makefile.am	2003-11-25 21:28:22.597684608 +0100
+@@ -2,7 +2,7 @@
  
- EXTRA_DIST = cdlc.1
+ # C rts:
+ libcdlrts_la_SOURCES = cdl3rts.c predefrts.c flexarray.c
+-CFLAGS = -ggdb -Wall
++AM_CFLAGS = -Wall
  
-diff -ur cdl3-1.2.3.old/man/man3/Makefile.am cdl3-1.2.3/man/man3/Makefile.am
---- cdl3-1.2.3.old/man/man3/Makefile.am	Wed Nov  6 23:22:11 2002
-+++ cdl3-1.2.3/man/man3/Makefile.am	Thu Nov  7 00:01:47 2002
-@@ -1,7 +1,7 @@
- ## Process this file with automake to produce Makefile.in
- mandir = $(prefix)/man
- man3dir = $(mandir)/man3
--man3_DATA = $(EXTRA_DIST)
-+man3DATA = $(EXTRA_DIST)
+ #CFLAGS += -ggdb -Wall
  
- EXTRA_DIST =	cdlrts.3 \
- 		cdl-converting.3 \
-diff -ur cdl3-1.2.3.old/stage1/Makefile.am cdl3-1.2.3/stage1/Makefile.am
---- cdl3-1.2.3.old/stage1/Makefile.am	Wed Nov  6 23:22:11 2002
-+++ cdl3-1.2.3/stage1/Makefile.am	Thu Nov  7 00:02:07 2002
-@@ -21,6 +21,8 @@
+--- cdl3-1.2.3/stage0/Makefile.am.orig	2001-06-20 17:58:46.000000000 +0200
++++ cdl3-1.2.3/stage0/Makefile.am	2003-11-25 21:28:45.732167632 +0100
+@@ -1,5 +1,5 @@
+ noinst_PROGRAMS = cdlc
+-CFLAGS = -O6 -I../include
++AM_CFLAGS = -I../include
+ 
+ cdlc_SOURCES = analyzer.c bitmap.c cdlc.c code.c coder.c errors.c files.c \
+ 	       inline.c modules.c nodes.c optimizer.c parser.c \
+--- cdl3-1.2.3/stage1/Makefile.am.orig	2000-10-16 14:10:55.000000000 +0200
++++ cdl3-1.2.3/stage1/Makefile.am	2003-11-25 21:29:37.597282936 +0100
+@@ -21,14 +21,14 @@
  
  CSRC = cdl3rts.c predefrts.c flexarray.c
  
-+CFLAGS = 
-+
- CFLAGS += -I../include
+-CFLAGS += -I../include
++AM_CFLAGS = -I../include
  
  cdlc_SOURCES = $(CDL3SRC) $(CSRC)
-@@ -28,7 +30,7 @@
+ 
  k3objs = $(CDL3SRC:.k3=.o)
  K3objs = $(CDL3SRC:.K3=.o) 
  
@@ -43,9 +37,8 @@ diff -ur cdl3-1.2.3.old/stage1/Makefile.am cdl3-1.2.3/stage1/Makefile.am
  	$(LIBTOOL) --mode=link $(CC) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $@
  
  SUFFIXES = .k3 .o .K3 .k3
-diff -ur cdl3-1.2.3.old/stage2/Makefile.am cdl3-1.2.3/stage2/Makefile.am
---- cdl3-1.2.3.old/stage2/Makefile.am	Wed Nov  6 23:22:11 2002
-+++ cdl3-1.2.3/stage2/Makefile.am	Thu Nov  7 00:02:15 2002
+--- cdl3-1.2.3/stage2/Makefile.am.orig	2000-10-16 14:28:06.000000000 +0200
++++ cdl3-1.2.3/stage2/Makefile.am	2003-11-25 21:29:30.671335840 +0100
 @@ -23,7 +23,7 @@
  cdlc_LDADD = ../rts/libcdlrts.la
  cdlc_DEPENDENCIES = ../rts/libcdlrts.la
@@ -55,3 +48,36 @@ diff -ur cdl3-1.2.3.old/stage2/Makefile.am cdl3-1.2.3/stage2/Makefile.am
  	$(LIBTOOL) --mode=link $(CC) -o $@ $(LDFLAGS) $^ $(cdlc_LDADD)
  
  SUFFIXES = .k3 .o 
+--- cdl3-1.2.3/man/man1/Makefile.am.orig	2002-02-12 16:02:20.000000000 +0100
++++ cdl3-1.2.3/man/man1/Makefile.am	2003-11-25 21:27:31.010527048 +0100
+@@ -1,7 +1,5 @@
+ ## Process this file with automake to produce Makefile.in
+-mandir = $(prefix)/man
+-man1dir = $(mandir)/man1
+-man1_DATA = $(EXTRA_DIST)
++man1_MANS = $(EXTRA_DIST)
+ 
+ EXTRA_DIST = cdlc.1
+ 
+--- cdl3-1.2.3/man/man3/Makefile.am.orig	2002-02-12 16:02:02.000000000 +0100
++++ cdl3-1.2.3/man/man3/Makefile.am	2003-11-25 21:27:41.881874352 +0100
+@@ -1,7 +1,5 @@
+ ## Process this file with automake to produce Makefile.in
+-mandir = $(prefix)/man
+-man3dir = $(mandir)/man3
+-man3_DATA = $(EXTRA_DIST)
++man3_MANS = $(EXTRA_DIST)
+ 
+ EXTRA_DIST =	cdlrts.3 \
+ 		cdl-converting.3 \
+--- cdl3-1.2.3/man/mann/Makefile.am.orig	2002-02-25 14:24:14.000000000 +0100
++++ cdl3-1.2.3/man/mann/Makefile.am	2003-11-25 21:27:59.794151272 +0100
+@@ -1,7 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+-mandir = $(prefix)/man
+ manndir = $(mandir)/mann
+-mann_DATA = $(EXTRA_DIST)
++mann_MANS = $(EXTRA_DIST)
+ 
+ EXTRA_DIST = cdlfubar.n \
+ 	     cdl-fubar-transient.n
