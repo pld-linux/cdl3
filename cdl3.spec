@@ -6,6 +6,7 @@ Release:	0.1
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://ftp.cs.kun.nl/pub/cdl3/%{name}-%{version}.tar.gz
+# Source0-md5:	60b7a5fed2ac27f4dfe90ff9ae292bce
 Patch0:		%{name}-acam.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
