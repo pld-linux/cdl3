@@ -2,7 +2,7 @@ Summary:	CDL3 System - compiler
 Summary(pl):	Kompilator systemu CDL3
 Name:		cdl3
 Version:	1.2.3
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://ftp.cs.kun.nl/pub/cdl3/%{name}-%{version}.tar.gz
