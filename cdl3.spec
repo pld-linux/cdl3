@@ -1,5 +1,5 @@
 Summary:	CDL3 System - compiler
-Summary(pl.UTF-8):   Kompilator systemu CDL3
+Summary(pl.UTF-8):	Kompilator systemu CDL3
 Name:		cdl3
 Version:	1.2.3
 Release:	1
