@@ -1,5 +1,5 @@
 Summary:	CDL3 System - compiler
-Summary(pl):	Kompilator systemu CDL3
+Summary(pl.UTF-8):   Kompilator systemu CDL3
 Name:		cdl3
 Version:	1.2.3
 Release:	1
@@ -27,20 +27,20 @@ communication between processes (human and machine) adhering to
 well-established protocols, or interpreter-like systems, interactively
 obeying a set of commands.
 
-%description -l pl
-CDL3 to jêzyk implementacyjny oparty na gramatykach affiksowych.
-Przekracza granicê pomiêdzy formalizmem sk³adniowym a jêzykiem
-programowania i próbuje po³±czyæ dobre cechy obu rzeczy. Struktura
-steruj±ca i struktury danych zosta³y tak dobrane, aby by³o bardzo
-³atwo pisaæ w CDL3 deterministyczne analizatory i translatory. W tym
-sensie CDL3 jest jêzykiem opisu kompilatorów (Compiler Description
-Language - st±d akronim). Jego zastosowanie nie jest jednak
-ograniczone do konstruowania kompilatorów. Jêzyk jest dobrze
-dopasowany, bardziej ogólnie, do wszystkich zastosowañ, które mo¿na
-scharakteryzowaæ jako zorientowane na sk³adniê: komunikacji miêdzy
-procesami (cz³owiekiem i maszyn±) zgodnie z dobrze ustalonymi
-protoko³ami lub systemy w stylu interpreterów, interaktywnie reaguj±ce
-na zestaw poleceñ.
+%description -l pl.UTF-8
+CDL3 to jÄ™zyk implementacyjny oparty na gramatykach affiksowych.
+Przekracza granicÄ™ pomiÄ™dzy formalizmem skÅ‚adniowym a jÄ™zykiem
+programowania i prÃ³buje poÅ‚Ä…czyÄ‡ dobre cechy obu rzeczy. Struktura
+sterujÄ…ca i struktury danych zostaÅ‚y tak dobrane, aby byÅ‚o bardzo
+Å‚atwo pisaÄ‡ w CDL3 deterministyczne analizatory i translatory. W tym
+sensie CDL3 jest jÄ™zykiem opisu kompilatorÃ³w (Compiler Description
+Language - stÄ…d akronim). Jego zastosowanie nie jest jednak
+ograniczone do konstruowania kompilatorÃ³w. JÄ™zyk jest dobrze
+dopasowany, bardziej ogÃ³lnie, do wszystkich zastosowaÅ„, ktÃ³re moÅ¼na
+scharakteryzowaÄ‡ jako zorientowane na skÅ‚adniÄ™: komunikacji miÄ™dzy
+procesami (czÅ‚owiekiem i maszynÄ…) zgodnie z dobrze ustalonymi
+protokoÅ‚ami lub systemy w stylu interpreterÃ³w, interaktywnie reagujÄ…ce
+na zestaw poleceÅ„.
 
 %prep
 %setup -q
