@@ -1,13 +1,12 @@
 Summary:	CDL3 System - compiler
 Summary(pl.UTF-8):	Kompilator systemu CDL3
 Name:		cdl3
-Version:	1.2.3
+Version:	1.2.7
 Release:	1
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://ftp.cs.kun.nl/pub/cdl3/%{name}-%{version}.tar.gz
-# Source0-md5:	60b7a5fed2ac27f4dfe90ff9ae292bce
-Patch0:		%{name}-acam.patch
+# Source0-md5:	d028bf290af22ec8c90ea11ca9a88fda
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
@@ -42,9 +41,21 @@ procesami (człowiekiem i maszyną) zgodnie z dobrze ustalonymi
 protokołami lub systemy w stylu interpreterów, interaktywnie reagujące
 na zestaw poleceń.
 
+%package examples
+Summary:        CDL3 - example of use
+Summary(pl.UTF-8):      CDL3 - przykłady wykorzystania
+Group:          Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description examples
+CDL3 - example of use.
+
+%description examples -l pl.UTF-8
+CDL3 - przykłady wykorzystania.
+
 %prep
 %setup -q
-%patch0 -p1
+%{__sed} -i -e 's,CLK_TCK,CLOCKS_PER_SEC,g' rts/cdl3rts.c
 
 %build
 cp -f /usr/share/automake/config.sub .
@@ -58,9 +69,13 @@ cp -f /usr/share/automake/config.sub .
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_includedir},%{_examplesdir}/%{name}-%{version}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+mv -f $RPM_BUILD_ROOT%{_datadir}/cdl3/include/*.h $RPM_BUILD_ROOT%{_includedir}
+mv -f $RPM_BUILD_ROOT%{_datadir}/cdl3/examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -74,8 +89,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO docs/*.ps docs/*.k3
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/cdlc
 %{_includedir}/*
 %{_libdir}/lib*.a
 %{_libdir}/lib*.la
-%{_mandir}/man[13n]/*
+%{_mandir}/man[137n]/*
+
+%files examples
+%defattr(644,root,root,755)
+%{_examplesdir}/%{name}-%{version}
